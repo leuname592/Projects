@@ -1,0 +1,1626 @@
+#Este archivo contiene las especificaciones gráficas de cada página, label, botón, etc; con el fin de lograr una correcta virtualización de la App creada.
+# File name: principal.py
+#: import FadeTransition kivy.uix.screenmanager.FadeTransition
+ScreenManagement:
+    RunPage:
+    MainPage:
+    DeltabMenuPage:
+    DeltabPPage:
+    DeltabSPage:
+    DeltabZPage:
+    YbMenuPage:
+    YbZPage:
+    YbPPage:
+    YbSPage:
+    MonoMenuPage:
+    MonofasicaZPage:
+    MonoPPage:
+    MonoSPage:
+    FuentePage:
+    FPPage:
+    NuevoFPPage:
+    ListaPage:
+    DataBaseWid:
+    ErrorPagefuente:
+    ErrorPagedeltabz:
+    ErrorPagedeltabp:
+    ErrorPagedeltabs:
+    ErrorPageYbz:
+    ErrorPageYbp:
+    ErrorPageYbs:
+    ErrorPagemonoz:
+    ErrorPagemonop:
+    ErrorPagemonos:
+    ErrorPagefpnuevo:
+<RunPage>:
+    name: "inicio"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'Fondo1.jpg'
+    FloatLayout:
+        Label:
+            text: "¡Bienvenido a SearchCap!"
+            font_size: '30dp'
+            color: 1,1,1,1
+            pos_hint: {"right":0.75,"top": 0.45}
+            size_hint_y: .05
+            size_hint_x: 0.5
+        Button:
+            text: "Empezar"
+            pos_hint: {"right":0.65,"top": 0.35}
+            size_hint_y: .05
+            size_hint_x: 0.3
+            background_normal: ''
+            background_color: (1,1,1,1)
+            color: (0,0,0,1)
+            on_release: root.cambio()
+<MainPage>:
+    name: "main"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'Fondo4.jpg'
+    FloatLayout:
+        Label:
+            text: "[b]Por favor agregue el tipo de máquinas que posee su sistema [/b]"
+            markup: True
+            font_size: '20dp'
+            color: 1,1,1,1
+            pos_hint: {"right":0.75,"top": 0.9}
+            size_hint_y: .05
+            size_hint_x: 0.5
+        Button:
+            text: "Delta balanceada"
+            pos_hint: {"right":0.65,"top": 0.7125}
+            size_hint_y: .05
+            size_hint_x: 0.3
+            on_release: app.root.current = "deltabmenu"
+        Button:
+            text: "Estrella balanceada"
+            pos_hint: {"right":0.65,"top": 0.525}
+            size_hint_y: .05
+            size_hint_x: 0.3
+            on_release: app.root.current = "Ybmenu"
+        Button:
+            text: "Carga monofásica"
+            pos_hint: {"right":0.65,"top": 0.3375}
+            size_hint_y: .05
+            size_hint_x: 0.3
+            on_release: app.root.current = "Monomenu"
+        Button:
+            text: "Calcular"
+            pos_hint: {"right":0.85,"top": 0.15}
+            size_hint_y: .05
+            size_hint_x: 0.3
+            on_release: root.calculotot()
+        Button:
+            text: "Lista de cargas ingresadas"
+            pos_hint: {"right":0.45,"top": 0.15}
+            size_hint_y: .05
+            size_hint_x: 0.3
+            on_release: app.root.current = "Listatot"
+<DeltabMenuPage>:
+    name: "deltabmenu"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'Deltab2.jpg'
+    FloatLayout:
+        Label:
+            text: "[b]Indique la forma en la cual desea ingresar la carga delta.[/b]"
+            markup: True
+            font_size: '20dp'
+            color: 1,1,1,1
+            font_size: '17dp'
+            pos_hint: {"right":0.75,"top": 0.9}
+            size_hint_y: .05
+            size_hint_x: 0.5
+        Button:
+            text: "Impedancia de la carga \n y del cableado"
+            halign: 'center'
+            pos_hint: {"right":0.31,"top": 0.275}
+            size_hint_y: .15
+            size_hint_x: 0.21
+            on_release: app.root.current = "deltabz"
+        Button:
+            text: "Potencia activa  \n y factor de potencia"
+            halign: 'center'
+            pos_hint: {"right":0.61,"top": 0.275}
+            size_hint_y: .15
+            size_hint_x: 0.21
+            on_release: app.root.current = "deltabp"
+        Button:
+            text: "Potencia aparente \n y factor de potencia"
+            halign: 'center'
+            pos_hint: {"right":0.91,"top": 0.275}
+            size_hint_y: .15
+            size_hint_x: 0.21
+            on_release: app.root.current = "deltabs"
+        Button:
+            text: "Volver"
+            pos_hint: {"right":0.1,"top": 1}
+            size_hint_y: .05
+            size_hint_x: 0.1
+            on_release: app.root.current = "main"
+<DeltabZPage>:
+    name: "deltabz"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'Deltab2.jpg'
+    FloatLayout:
+        Label:
+            text: "[b]Por favor ingrese el valor de la impedancia Z de la carga Delta \n y la impedancia Z_L de los conductores.[/b]"
+            markup: True
+            halign: 'center'
+            color: 1,1,1,1
+            font_size: '17dp'
+            pos_hint: {"right":0.75,"top": 0.9}
+            size_hint_y: .05
+            size_hint_x: 0.5
+        Button:
+            text: "Ingresar"
+            pos_hint: {"right":0.85,"top": 0.275}
+            size_hint_y: .1
+            size_hint_x: 0.3
+            on_release: root.calcdeltabz()
+        TextInput:
+            id: impdeltab
+            pos_hint: {"right":0.45,"top": 0.3}
+            size_hint_y: .05
+            size_hint_x: 0.1
+            multiline: False
+        Label:
+            text: "[b]Valor de Z (ohms): [/b]"
+            markup: True
+            color: 1,1,1,1
+            font_size: '17dp'
+            pos_hint: {"right":0.305,"top": 0.3}
+            size_hint_y: .05
+            size_hint_x: 0.1
+        TextInput:
+            id: implineadeltab
+            pos_hint: {"right":0.45,"top": 0.2}
+            size_hint_y: .05
+            size_hint_x: 0.1
+            multiline: False
+        Label:
+            text: "[b]Valor de Z_L (ohms): [/b]"
+            markup: True
+            color: 1,1,1,1
+            font_size: '17dp'
+            pos_hint: {"right":0.30,"top": 0.2}
+            size_hint_y: .05
+            size_hint_x: 0.1
+        Button:
+            text: "Volver"
+            pos_hint: {"right":0.1,"top": 1}
+            size_hint_y: .05
+            size_hint_x: 0.1
+            on_release: app.root.current = "deltabmenu"
+<ErrorPagedeltabz>:
+    name: "errordeltabz"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'Fondo7.jpg'
+    FloatLayout:
+        Label:
+            text: "[b] No ha ingresado un dato válido o ha dejado campos en blanco. \n Presione 'Volver' para intentarlo de nuevo. [/b]"
+            markup: True
+            halign: 'center'
+            font_size: '20dp'
+            color: 1,1,1,1
+            pos_hint: {"right":0.75,"top": 0.65}
+            size_hint_y: .1
+            size_hint_x: 0.5
+        Button:
+            text: "Volver"
+            pos_hint: {"right":0.575,"top": 0.5}
+            font_size: '20dp'
+            size_hint_y: .1
+            size_hint_x: 0.15
+            on_release: app.root.current = "deltabz"
+<DeltabPPage>:
+    name: "deltabp"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'Deltab2.jpg'
+    FloatLayout:
+        Label:
+            text: "[b]Por favor ingrese el valor de la potencia activa y el factor de potencia de la carga Delta \n y la impedancia Z_L de los conductores.[/b]"
+            markup: True
+            halign: 'center'
+            color: 1,1,1,1
+            font_size: '17dp'
+            pos_hint: {"right":0.75,"top": 0.9}
+            size_hint_y: .1
+            size_hint_x: 0.5
+        Button:
+            text: "Ingresar"
+            pos_hint: {"right":0.85,"top": 0.225}
+            size_hint_y: .1
+            size_hint_x: 0.3
+            on_release: root.calcdeltabp()
+        TextInput:
+            id: activadeltab
+            pos_hint: {"right":0.45,"top": 0.25}
+            size_hint_y: .05
+            size_hint_x: 0.1
+            multiline: False
+        Label:
+            text: "[b]Potencia activa (W):[/b]"
+            markup: True
+            color: 1,1,1,1
+            font_size: '17dp'
+            pos_hint: {"right":0.30,"top": 0.25}
+            size_hint_y: .05
+            size_hint_x: 0.1
+        TextInput:
+            id: fpdeltab
+            pos_hint: {"right":0.45,"top": 0.17}
+            size_hint_y: .05
+            size_hint_x: 0.1
+            multiline: False
+        Label:
+            text: "[b]Factor de potencia:[/b]"
+            markup: True
+            color: 1,1,1,1
+            font_size: '17dp'
+            pos_hint: {"right":0.3,"top": 0.17}
+            size_hint_y: .05
+            size_hint_x: 0.1
+        TextInput:
+            id: adelantoatraso
+            pos_hint: {"right":0.5,"top": 0.10}
+            size_hint_y: .05
+            size_hint_x: 0.15
+            multiline: False
+        Label:
+            text: "[b]Adelanto o atraso:[/b]"
+            markup: True
+            color: 1,1,1,1
+            font_size: '17dp'
+            pos_hint: {"right":0.3,"top": 0.10}
+            size_hint_y: .05
+            size_hint_x: 0.1
+        Button:
+            text: "Volver"
+            pos_hint: {"right":0.1,"top": 1}
+            size_hint_y: .05
+            size_hint_x: 0.1
+            on_release: app.root.current = "deltabmenu"
+<ErrorPagedeltabp>:
+    name: "errordeltabp"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'Fondo7.jpg'
+    FloatLayout:
+        Label:
+            text: "[b] No ha ingresado un dato válido o ha dejado campos en blanco. \n Presione 'Volver' para intentarlo de nuevo. [/b]"
+            markup: True
+            halign: 'center'
+            font_size: '20dp'
+            color: 1,1,1,1
+            pos_hint: {"right":0.75,"top": 0.65}
+            size_hint_y: .1
+            size_hint_x: 0.5
+        Button:
+            text: "Volver"
+            pos_hint: {"right":0.575,"top": 0.5}
+            font_size: '20dp'
+            size_hint_y: .1
+            size_hint_x: 0.15
+            on_release: app.root.current = "deltabp"
+<DeltabSPage>:
+    name: "deltabs"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'Deltab2.jpg'
+    FloatLayout:
+        Label:
+            text: "[b]Por favor ingrese el valor de la potencia aparente y el factor de potencia de la carga Delta \n y la impedancia Z_L de los conductores.[/b]"
+            markup: True
+            halign: 'center'
+            color: 1,1,1,1
+            font_size: '17dp'
+            pos_hint: {"right":0.75,"top": 0.9}
+            size_hint_y: .1
+            size_hint_x: 0.5
+        Button:
+            text: "Ingresar"
+            pos_hint: {"right":0.85,"top": 0.225}
+            size_hint_y: .1
+            size_hint_x: 0.3
+            on_release: root.calcdeltabs()
+        TextInput:
+            id: aparentedeltab
+            pos_hint: {"right":0.45,"top": 0.25}
+            size_hint_y: .05
+            size_hint_x: 0.1
+            multiline: False
+        Label:
+            text: "[b]Potencia aparente (VA):[/b]"
+            markup: True
+            color: 1,1,1,1
+            font_size: '17dp'
+            pos_hint: {"right":0.285,"top": 0.25}
+            size_hint_y: .05
+            size_hint_x: 0.1
+        TextInput:
+            id: fpdeltab
+            pos_hint: {"right":0.45,"top": 0.17}
+            size_hint_y: .05
+            size_hint_x: 0.1
+            multiline: False
+        Label:
+            text: "[b]Factor de potencia:[/b]"
+            markup: True
+            color: 1,1,1,1
+            font_size: '17dp'
+            pos_hint: {"right":0.3,"top": 0.17}
+            size_hint_y: .05
+            size_hint_x: 0.1
+        TextInput:
+            id: adelantoatraso
+            pos_hint: {"right":0.5,"top": 0.10}
+            size_hint_y: .05
+            size_hint_x: 0.15
+            multiline: False
+        Label:
+            text: "[b]Adelanto o atraso:[/b]"
+            markup: True
+            color: 1,1,1,1
+            font_size: '17dp'
+            pos_hint: {"right":0.3,"top": 0.10}
+            size_hint_y: .05
+            size_hint_x: 0.1
+        Button:
+            text: "Volver"
+            pos_hint: {"right":0.1,"top": 1}
+            size_hint_y: .05
+            size_hint_x: 0.1
+            on_release: app.root.current = "deltabmenu"
+<ErrorPagedeltabs>:
+    name: "errordeltabs"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'Fondo7.jpg'
+    FloatLayout:
+        Label:
+            text: "[b] No ha ingresado un dato válido o ha dejado campos en blanco. \n Presione 'Volver' para intentarlo de nuevo. [/b]"
+            markup: True
+            halign: 'center'
+            font_size: '20dp'
+            color: 1,1,1,1
+            pos_hint: {"right":0.75,"top": 0.65}
+            size_hint_y: .1
+            size_hint_x: 0.5
+        Button:
+            text: "Volver"
+            pos_hint: {"right":0.575,"top": 0.5}
+            font_size: '20dp'
+            size_hint_y: .1
+            size_hint_x: 0.15
+            on_release: app.root.current = "deltabs"
+<YbMenuPage>:
+    name: "Ybmenu"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'Yb2.jpg'
+    FloatLayout:
+        Label:
+            text: "[b]Indique la forma en la cual desea ingresar la carga estrella.[/b]"
+            markup: True
+            color: 1,1,1,1
+            font_size: '20dp'
+            pos_hint: {"right":0.75,"top": 0.9}
+            size_hint_y: .05
+            size_hint_x: 0.5
+        Button:
+            text: "Impedancia de la carga \n y del cableado"
+            halign: 'center'
+            pos_hint: {"right":0.31,"top": 0.275}
+            size_hint_y: .15
+            size_hint_x: 0.21
+            on_release: app.root.current = "Ybz"
+        Button:
+            text: "Potencia activa \n y factor de potencia "
+            halign: 'center'
+            pos_hint: {"right":0.61,"top": 0.275}
+            size_hint_y: .15
+            size_hint_x: 0.21
+            on_release: app.root.current = "Ybp"
+        Button:
+            text: "Potencia aparente \n y factor de potencia"
+            halign: 'center'
+            pos_hint: {"right":0.91,"top": 0.275}
+            size_hint_y: .15
+            size_hint_x: 0.21
+            on_release: app.root.current = "Ybs"
+        Button:
+            text: "Volver"
+            pos_hint: {"right":0.1,"top": 1}
+            size_hint_y: .05
+            size_hint_x: 0.1
+            on_release: app.root.current = "main"
+<YbZPage>:
+    name: "Ybz"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'Yb2.jpg'
+    FloatLayout:
+        Label:
+            text: "[b]Por favor ingrese el valor de la impedancia Z de la carga Estrella \n y la impedancia Z_L de los conductores.[/b]"
+            markup: True
+            halign: 'center'
+            font_size: '17dp'
+            color: 1,1,1,1
+            pos_hint: {"right":0.75,"top": 0.9}
+            size_hint_y: .05
+            size_hint_x: 0.5
+        Button:
+            text: "Ingresar"
+            pos_hint: {"right":0.85,"top": 0.275}
+            size_hint_y: .1
+            size_hint_x: 0.3
+            on_release: root.calcybz()
+        TextInput:
+            id: impyb
+            pos_hint: {"right":0.45,"top": 0.28}
+            size_hint_y: .05
+            size_hint_x: 0.1
+            multiline: False
+        Label:
+            text: "[b]Valor de Z (ohms):[/b]"
+            markup: True
+            color: 1,1,1,1
+            font_size: '17dp'
+            pos_hint: {"right":0.3,"top": 0.28}
+            size_hint_y: .05
+            size_hint_x: 0.1
+        TextInput:
+            id: implineayb
+            pos_hint: {"right":0.45,"top": 0.19}
+            size_hint_y: .05
+            size_hint_x: 0.1
+            multiline: False
+        Label:
+            text: "[b]Valor de Z_L (ohms):[/b]"
+            markup: True
+            color: 1,1,1,1
+            font_size: '17dp'
+            pos_hint: {"right":0.295,"top": 0.19}
+            size_hint_y: .05
+            size_hint_x: 0.1
+        Button:
+            text: "Volver"
+            pos_hint: {"right":0.1,"top": 1}
+            size_hint_y: .05
+            size_hint_x: 0.1
+            on_release: app.root.current = "Ybmenu"
+<ErrorPageYbz>:
+    name: "errorybz"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'Fondo7.jpg'
+    FloatLayout:
+        Label:
+            text: "[b] No ha ingresado un dato válido o ha dejado campos en blanco. \n Presione 'Volver' para intentarlo de nuevo. [/b]"
+            markup: True
+            halign: 'center'
+            font_size: '20dp'
+            color: 1,1,1,1
+            pos_hint: {"right":0.75,"top": 0.65}
+            size_hint_y: .1
+            size_hint_x: 0.5
+        Button:
+            text: "Volver"
+            pos_hint: {"right":0.575,"top": 0.5}
+            font_size: '20dp'
+            size_hint_y: .1
+            size_hint_x: 0.15
+            on_release: app.root.current = "Ybz"
+<YbPPage>:
+    name: "Ybp"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'Yb2.jpg'
+    FloatLayout:
+        Label:
+            text: "[b]Por favor ingrese el valor de la potencia activa y el factor de potencia de la carga Estrella \n y la impedancia Z_L de los conductores.[/b]"
+            markup: True
+            halign: 'center'
+            color: 1,1,1,1
+            font_size: '17dp'
+            pos_hint: {"right":0.75,"top": 0.9}
+            size_hint_y: .1
+            size_hint_x: 0.5
+        Button:
+            text: "Ingresar"
+            pos_hint: {"right":0.85,"top": 0.225}
+            size_hint_y: .1
+            size_hint_x: 0.3
+            on_release: root.calcybp()
+        TextInput:
+            id: activayb
+            pos_hint: {"right":0.45,"top": 0.24}
+            size_hint_y: .05
+            size_hint_x: 0.1
+            multiline: False
+        Label:
+            text: "[b]Potencia activa (W):[/b]"
+            markup: True
+            color: 1,1,1,1
+            font_size: '17dp'
+            pos_hint: {"right":0.3,"top": 0.24}
+            size_hint_y: .05
+            size_hint_x: 0.1
+        TextInput:
+            id: fpyb
+            pos_hint: {"right":0.45,"top": 0.16}
+            size_hint_y: .05
+            size_hint_x: 0.1
+            multiline: False
+        Label:
+            text: "[b]Factor de potencia:[/b]"
+            markup: True
+            color: 1,1,1,1
+            font_size: '17dp'
+            pos_hint: {"right":0.3,"top": 0.16}
+            size_hint_y: .05
+            size_hint_x: 0.1
+        TextInput:
+            id: adelantoatraso
+            pos_hint: {"right":0.5,"top": 0.09}
+            size_hint_y: .05
+            size_hint_x: 0.15
+            multiline: False
+        Label:
+            text: "[b]Adelanto o atraso:[/b]"
+            markup: True
+            color: 1,1,1,1
+            font_size: '17dp'
+            pos_hint: {"right":0.3,"top": 0.09}
+            size_hint_y: .05
+            size_hint_x: 0.1
+        Button:
+            text: "Volver"
+            pos_hint: {"right":0.1,"top": 1}
+            size_hint_y: .05
+            size_hint_x: 0.1
+            on_release: app.root.current = "Ybmenu"
+<ErrorPageYbp>:
+    name: "errorybp"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'Fondo7.jpg'
+    FloatLayout:
+        Label:
+            text: "[b] No ha ingresado un dato válido o ha dejado campos en blanco. \n Presione 'Volver' para intentarlo de nuevo. [/b]"
+            markup: True
+            halign: 'center'
+            font_size: '20dp'
+            color: 1,1,1,1
+            pos_hint: {"right":0.75,"top": 0.65}
+            size_hint_y: .1
+            size_hint_x: 0.5
+        Button:
+            text: "Volver"
+            pos_hint: {"right":0.575,"top": 0.5}
+            font_size: '20dp'
+            size_hint_y: .1
+            size_hint_x: 0.15
+            on_release: app.root.current = "Ybp"
+<YbSPage>:
+    name: "Ybs"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'Yb2.jpg'
+    FloatLayout:
+        Label:
+            text: "[b]Por favor ingrese el valor de la potencia aparente y el factor de potencia de la carga Estrella \n y la impedancia Z_L de los conductores.[/b]"
+            markup: True
+            halign: 'center'
+            color: 1,1,1,1
+            font_size: '17dp'
+            pos_hint: {"right":0.75,"top": 0.9}
+            size_hint_y: .1
+            size_hint_x: 0.5
+        Button:
+            text: "Ingresar"
+            pos_hint: {"right":0.85,"top": 0.225}
+            size_hint_y: .1
+            size_hint_x: 0.3
+            on_release: root.calcybs()
+        TextInput:
+            id: aparenteyb
+            pos_hint: {"right":0.45,"top": 0.24}
+            size_hint_y: .05
+            size_hint_x: 0.1
+            multiline: False
+        Label:
+            text: "[b]Potencia aparente (VA):[/b]"
+            markup: True
+            color: 1,1,1,1
+            font_size: '17dp'
+            pos_hint: {"right":0.28,"top": 0.24}
+            size_hint_y: .05
+            size_hint_x: 0.1
+        TextInput:
+            id: fpyb
+            pos_hint: {"right":0.45,"top": 0.16}
+            size_hint_y: .05
+            size_hint_x: 0.1
+            multiline: False
+        Label:
+            text: "[b]Factor de potencia:[/b]"
+            markup: True
+            color: 1,1,1,1
+            font_size: '17dp'
+            pos_hint: {"right":0.3,"top": 0.16}
+            size_hint_y: .05
+            size_hint_x: 0.1
+        TextInput:
+            id: adelantoatraso
+            pos_hint: {"right":0.5,"top": 0.09}
+            size_hint_y: .05
+            size_hint_x: 0.15
+            multiline: False
+        Label:
+            text: "[b]Adelanto o atraso:[/b]"
+            markup: True
+            color: 1,1,1,1
+            font_size: '17dp'
+            pos_hint: {"right":0.3,"top": 0.09}
+            size_hint_y: .05
+            size_hint_x: 0.1
+        Button:
+            text: "Volver"
+            pos_hint: {"right":0.1,"top": 1}
+            size_hint_y: .05
+            size_hint_x: 0.1
+            on_release: app.root.current = "Ybmenu"
+<ErrorPageYbs>:
+    name: "errorybs"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'Fondo7.jpg'
+    FloatLayout:
+        Label:
+            text: "[b] No ha ingresado un dato válido o ha dejado campos en blanco. \n Presione 'Volver' para intentarlo de nuevo. [/b]"
+            markup: True
+            halign: 'center'
+            font_size: '20dp'
+            color: 1,1,1,1
+            pos_hint: {"right":0.75,"top": 0.65}
+            size_hint_y: .1
+            size_hint_x: 0.5
+        Button:
+            text: "Volver"
+            pos_hint: {"right":0.575,"top": 0.5}
+            font_size: '20dp'
+            size_hint_y: .1
+            size_hint_x: 0.15
+            on_release: app.root.current = "Ybs"
+<MonoMenuPage>:
+    name: "Monomenu"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'Monofasica.jpg'
+    FloatLayout:
+        Label:
+            text: "[b]Indique la forma en la cual desea ingresar la carga monofasica.[/b]"
+            markup: True
+            color: 1,1,1,1
+            font_size: '20dp'
+            pos_hint: {"right":0.75,"top": 0.9}
+            size_hint_y: .05
+            size_hint_x: 0.5
+        Button:
+            text: "Impedancia de la carga \n y del cableado"
+            halign: 'center'
+            pos_hint: {"right":0.31,"top": 0.275}
+            size_hint_y: .15
+            size_hint_x: 0.21
+            on_release: app.root.current = "monofasicaz"
+        Button:
+            text: "Potencia activa \n y factor de potencia"
+            halign: 'center'
+            pos_hint: {"right":0.61,"top": 0.275}
+            size_hint_y: .15
+            size_hint_x: 0.21
+            on_release: app.root.current = "monop"
+        Button:
+            text: "Potencia aparente \n y factor de potencia"
+            halign: 'center'
+            pos_hint: {"right":0.91,"top": 0.275}
+            size_hint_y: .15
+            size_hint_x: 0.21
+            on_release: app.root.current = "monos"
+        Button:
+            text: "Volver"
+            pos_hint: {"right":0.1,"top": 1}
+            size_hint_y: .05
+            size_hint_x: 0.1
+            on_release: app.root.current = "main"
+<MonofasicaZPage>:
+    name: "monofasicaz"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'Monofasica.jpg'
+    FloatLayout:
+        Label:
+            text: "[b]Por favor ingrese el valor de la impedancia Z de la carga monofásica.[/b]"
+            markup: True
+            color: 1,1,1,1
+            font_size: '17dp'
+            pos_hint: {"right":0.75,"top": 0.9}
+            size_hint_y: .05
+            size_hint_x: 0.5
+        Label:
+            text: "[b]Indique impedancia asociada a la línea en el espacio correspondiente.\n Además, señale las líneas a las que se conecta: A, B, C o N(neutro). \n Combinaciones válidas: AB, BC, CA, AN, BN, CN.[/b]"
+            halign: 'center'
+            markup: True
+            font_size: '17dp'
+            color: 1,1,1,1
+            pos_hint: {"right":0.75,"top": 0.85}
+            size_hint_y: .1
+            size_hint_x: 0.5
+        Button:
+            text: "Ingresar"
+            pos_hint: {"right":0.9,"top": 0.275}
+            size_hint_y: .1
+            size_hint_x: 0.3
+            on_release: root.calcmonofasica()
+        TextInput:
+            id: impmonofasica
+            pos_hint: {"right":0.25,"top": 0.3}
+            size_hint_y: .05
+            size_hint_x: 0.1
+            multiline: False
+        Label:
+            text: "[b]Valor de Z \n(ohms):[/b]"
+            halign: 'center'
+            markup: True
+            font_size: '17dp'
+            color: 1,1,1,1
+            pos_hint: {"right":0.12,"top": 0.3}
+            size_hint_y: .05
+            size_hint_x: 0.1
+        TextInput:
+            id: implinemonofasica
+            pos_hint: {"right":0.25,"top": 0.2}
+            size_hint_y: .05
+            size_hint_x: 0.1
+            multiline: False
+        Label:
+            text: "[b]Valor de Z_L \n(ohms):[/b]"
+            halign: 'center'
+            markup: True
+            font_size: '17dp'
+            color: 1,1,1,1
+            pos_hint: {"right":0.13,"top": 0.2}
+            size_hint_y: .05
+            size_hint_x: 0.1
+        TextInput:
+            id: linea1
+            pos_hint: {"right":0.57,"top": 0.3}
+            size_hint_y: .05
+            size_hint_x: 0.1
+            multiline: False
+        Label:
+            text: "[b]Linea 1 (A, B, C o N):[/b]"
+            markup: True
+            font_size: '17dp'
+            color: 1,1,1,1
+            pos_hint: {"right":0.42,"top": 0.3}
+            size_hint_y: .05
+            size_hint_x: 0.1
+        TextInput:
+            id: linea2
+            pos_hint: {"right":0.57,"top": 0.2}
+            size_hint_y: .05
+            size_hint_x: 0.1
+            multiline: False
+        Label:
+            text: "[b]Línea 2 (A, B, C o N):[/b]"
+            markup: True
+            font_size: '17dp'
+            color: 1,1,1,1
+            pos_hint: {"right":0.42,"top": 0.2}
+            size_hint_y: .05
+            size_hint_x: 0.1
+        Button:
+            text: "Volver"
+            pos_hint: {"right":0.1,"top": 1}
+            size_hint_y: .05
+            size_hint_x: 0.1
+            on_release: app.root.current = "Monomenu"
+<ErrorPagemonoz>:
+    name: "errormonoz"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'Fondo7.jpg'
+    FloatLayout:
+        Label:
+            text: "[b] Error: combinación no válida, dato inválido o campos en blanco. \n Combinaciones válidas: AB, BC, CA, AN, BN, CN \n Presione 'Volver' para intentarlo de nuevo. [/b]"
+            markup: True
+            halign: 'center'
+            font_size: '20dp'
+            color: 1,1,1,1
+            pos_hint: {"right":0.75,"top": 0.65}
+            size_hint_y: .1
+            size_hint_x: 0.5
+        Button:
+            text: "Volver"
+            pos_hint: {"right":0.575,"top": 0.5}
+            font_size: '20dp'
+            size_hint_y: .1
+            size_hint_x: 0.15
+            on_release: app.root.current = "monofasicaz"
+<MonoPPage>:
+    name: "monop"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'Monofasica.jpg'
+    FloatLayout:
+        Label:
+            text: "[b]Por favor ingrese el valor de la potencia activa y el factor de potencia de la carga monofasica \n y la impedancia Z_L del conductor.\n Además, señale las líneas a las que se conecta: A, B, C o N(neutro). \n Combinaciones válidas: AB, BC, CA, AN, BN, CN.[/b]"
+            markup: True
+            halign: 'center'
+            color: 1,1,1,1
+            font_size: '17dp'
+            pos_hint: {"right":0.75,"top": 0.9}
+            size_hint_y: .15
+            size_hint_x: 0.5
+        Button:
+            text: "Ingresar"
+            pos_hint: {"right":0.85,"top": 0.225}
+            size_hint_y: .1
+            size_hint_x: 0.15
+            on_release: root.calcmonop()
+        TextInput:
+            id: activamono
+            pos_hint: {"right":0.35,"top": 0.24}
+            size_hint_y: .05
+            size_hint_x: 0.1
+            multiline: False
+        Label:
+            text: "[b]Potencia activa (W):[/b]"
+            markup: True
+            color: 1,1,1,1
+            font_size: '17dp'
+            pos_hint: {"right":0.2,"top": 0.24}
+            size_hint_y: .05
+            size_hint_x: 0.1
+        TextInput:
+            id: fpmono
+            pos_hint: {"right":0.35,"top": 0.14}
+            size_hint_y: .05
+            size_hint_x: 0.1
+            multiline: False
+        Label:
+            text: "[b]Factor de potencia:[/b]"
+            markup: True
+            color: 1,1,1,1
+            font_size: '17dp'
+            pos_hint: {"right":0.2,"top": 0.14}
+            size_hint_y: .05
+            size_hint_x: 0.1
+        TextInput:
+            id: linea1
+            pos_hint: {"right":0.67,"top": 0.24}
+            size_hint_y: .05
+            size_hint_x: 0.1
+            multiline: False
+        Label:
+            text: "[b]Linea 1 (A, B, o C):[/b]"
+            markup: True
+            font_size: '17dp'
+            color: 1,1,1,1
+            pos_hint: {"right":0.525,"top": 0.24}
+            size_hint_y: .05
+            size_hint_x: 0.1
+        TextInput:
+            id: linea2
+            pos_hint: {"right":0.67,"top": 0.14}
+            size_hint_y: .05
+            size_hint_x: 0.1
+            multiline: False
+        Label:
+            text: "[b]Línea 2 (A, B, C o N):[/b]"
+            markup: True
+            font_size: '17dp'
+            color: 1,1,1,1
+            pos_hint: {"right":0.52,"top": 0.14}
+            size_hint_y: .05
+            size_hint_x: 0.1
+        TextInput:
+            id: adelantoatraso
+            pos_hint: {"right":0.53,"top": 0.07}
+            size_hint_y: .05
+            size_hint_x: 0.15
+            multiline: False
+        Label:
+            text: "[b]Adelanto o atraso:[/b]"
+            markup: True
+            color: 1,1,1,1
+            font_size: '17dp'
+            pos_hint: {"right":0.33,"top": 0.07}
+            size_hint_y: .05
+            size_hint_x: 0.1
+        Button:
+            text: "Volver"
+            pos_hint: {"right":0.1,"top": 1}
+            size_hint_y: .05
+            size_hint_x: 0.1
+            on_release: app.root.current = "Monomenu"
+<ErrorPagemonop>:
+    name: "errormonop"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'Fondo7.jpg'
+    FloatLayout:
+        Label:
+            text: "[b] Error: combinación no válida, dato inválido o campos en blanco. \n Combinaciones válidas: AB, BC, CA, AN, BN, CN \n Presione 'Volver' para intentarlo de nuevo. [/b]"
+            markup: True
+            halign: 'center'
+            font_size: '20dp'
+            color: 1,1,1,1
+            pos_hint: {"right":0.75,"top": 0.65}
+            size_hint_y: .1
+            size_hint_x: 0.5
+        Button:
+            text: "Volver"
+            pos_hint: {"right":0.575,"top": 0.5}
+            font_size: '20dp'
+            size_hint_y: .1
+            size_hint_x: 0.15
+            on_release: app.root.current = "monop"
+<MonoSPage>:
+    name: "monos"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'Monofasica.jpg'
+    FloatLayout:
+        Label:
+            text: "[b]Por favor ingrese el valor de la potencia aparente y el factor de potencia de la carga monofasica \n y la impedancia Z_L del conductor. \n Además, señale las líneas a las que se conecta: A, B, C o N(neutro). \n Combinaciones válidas: AB, BC, CA, AN, BN, CN.[/b]"
+            markup: True
+            halign: 'center'
+            color: 1,1,1,1
+            font_size: '17dp'
+            pos_hint: {"right":0.75,"top": 0.9}
+            size_hint_y: .15
+            size_hint_x: 0.5
+        Button:
+            text: "Ingresar"
+            pos_hint: {"right":0.85,"top": 0.225}
+            size_hint_y: .1
+            size_hint_x: 0.15
+            on_release: root.calcmonos()
+        TextInput:
+            id: aparentemono
+            pos_hint: {"right":0.35,"top": 0.24}
+            size_hint_y: .05
+            size_hint_x: 0.1
+            multiline: False
+        Label:
+            text: "[b]Potencia aparente (VA):[/b]"
+            markup: True
+            color: 1,1,1,1
+            font_size: '17dp'
+            pos_hint: {"right":0.175,"top": 0.24}
+            size_hint_y: .05
+            size_hint_x: 0.1
+        TextInput:
+            id: fpmono
+            pos_hint: {"right":0.35,"top": 0.14}
+            size_hint_y: .05
+            size_hint_x: 0.1
+            multiline: False
+        Label:
+            text: "[b]Factor de potencia:[/b]"
+            markup: True
+            color: 1,1,1,1
+            font_size: '17dp'
+            pos_hint: {"right":0.2,"top": 0.14}
+            size_hint_y: .05
+            size_hint_x: 0.1
+
+        TextInput:
+            id: linea1
+            pos_hint: {"right":0.67,"top": 0.24}
+            size_hint_y: .05
+            size_hint_x: 0.1
+            multiline: False
+        Label:
+            text: "[b]Linea 1 (A, B o C):[/b]"
+            markup: True
+            font_size: '17dp'
+            color: 1,1,1,1
+            pos_hint: {"right":0.525,"top": 0.24}
+            size_hint_y: .05
+            size_hint_x: 0.1
+        TextInput:
+            id: linea2
+            pos_hint: {"right":0.67,"top": 0.14}
+            size_hint_y: .05
+            size_hint_x: 0.1
+            multiline: False
+        Label:
+            text: "[b]Línea 2 (A, B, C o N):[/b]"
+            markup: True
+            font_size: '17dp'
+            color: 1,1,1,1
+            pos_hint: {"right":0.52,"top": 0.14}
+            size_hint_y: .05
+            size_hint_x: 0.1
+        TextInput:
+            id: adelantoatraso
+            pos_hint: {"right":0.53,"top": 0.07}
+            size_hint_y: .05
+            size_hint_x: 0.15
+            multiline: False
+        Label:
+            text: "[b]Adelanto o atraso:[/b]"
+            markup: True
+            color: 1,1,1,1
+            font_size: '17dp'
+            pos_hint: {"right":0.33,"top": 0.07}
+            size_hint_y: .05
+            size_hint_x: 0.1
+        Button:
+            text: "Volver"
+            pos_hint: {"right":0.1,"top": 1}
+            size_hint_y: .05
+            size_hint_x: 0.1
+            on_release: app.root.current = "Monomenu"
+<ErrorPagemonos>:
+    name: "errormonos"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'Fondo4.jpg'
+    FloatLayout:
+        Label:
+            text: "[b] Error: combinación no válida, dato inválido o campos en blanco. \n Combinaciones válidas: AB, BC, CA, AN, BN, CN \n Presione 'Volver' para intentarlo de nuevo. [/b]"
+            markup: True
+            halign: 'center'
+            font_size: '20dp'
+            color: 1,1,1,1
+            pos_hint: {"right":0.75,"top": 0.65}
+            size_hint_y: .1
+            size_hint_x: 0.5
+        Button:
+            text: "Volver"
+            pos_hint: {"right":0.575,"top": 0.5}
+            font_size: '20dp'
+            size_hint_y: .1
+            size_hint_x: 0.15
+            on_release: app.root.current = "monos"
+<FuentePage>:
+    name: "fuente"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'Fuente.jpg'
+    FloatLayout:
+        Label:
+            text: "[b] Para seleccionar el voltaje de línea a utilizar, primero ingrese la fase en grados. \n      Luego seleccione el botón que corresponde a la magnitud de dicho voltaje. [/b]"
+            markup: True
+            font_size: '20dp'
+            color: 1,1,1,1
+            pos_hint: {"right":0.75,"top": 0.9}
+            size_hint_y: .1
+            size_hint_x: 0.5
+        Button:
+            text: "240 V"
+            pos_hint: {"right":0.65,"top": 0.225}
+            size_hint_y: .05
+            size_hint_x: 0.1
+            on_release: root.calcfuente240()
+        Button:
+            text: "480 V"
+            pos_hint: {"right":0.65,"top": 0.125}
+            size_hint_y: .05
+            size_hint_x: 0.1
+            on_release: root.calcfuente480()
+        Label:
+            text: "Fase de V_AB:"
+            pos_hint: {"right":0.355,"top": 0.175}
+            size_hint_y: .05
+            size_hint_x: 0.05
+            color: 1,1,1,1
+        TextInput:
+            id: FaseVab
+            pos_hint: {"right":0.5,"top": 0.175}
+            size_hint_y: .05
+            size_hint_x: 0.1
+            multiline: False
+        Button:
+            text: "Volver"
+            pos_hint: {"right":0.1,"top": 1}
+            size_hint_y: .05
+            size_hint_x: 0.1
+            on_release: app.root.current = "inicio"
+<ErrorPagefuente>:
+    name: "errorfuente"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'Fondo7.jpg'
+    FloatLayout:
+        Label:
+            text: "[b] No ha ingresado un dato válido o ha dejado el campo en blanco. \n Presione 'Volver' para regresar a la página anterior. [/b]"
+            markup: True
+            halign: 'center'
+            font_size: '20dp'
+            color: 1,1,1,1
+            pos_hint: {"right":0.75,"top": 0.65}
+            size_hint_y: .1
+            size_hint_x: 0.5
+        Button:
+            text: "Volver"
+            pos_hint: {"right":0.575,"top": 0.5}
+            font_size: '20dp'
+            size_hint_y: .1
+            size_hint_x: 0.15
+            on_release: app.root.current = "fuente"
+<FPPage>:
+    name: "factorpotencia"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'Fondo4.jpg'
+    FloatLayout:
+        Label:
+            text: "Para calcular el factor de potencia de su sistema presione en [b] Calcular [/b]"
+            markup: True
+            color: 1,1,1,1
+            font_size: '20dp'
+            color: 1,1,1,1
+            pos_hint: {"right":0.77,"top": 0.8}
+            size_hint_y: .05
+            size_hint_x: 0.6
+        Label:
+            text: "[b]El factor de potencia de su sistema es de:[/b]"
+            markup: True
+            color: 1,1,1,1
+            font_size: '20dp'
+            pos_hint: {"right":0.75,"top": 0.675}
+            size_hint_y: .05
+            size_hint_x: 0.5
+        Label:
+            text: root.fptext
+            markup: True
+            font_size: '20dp'
+            color: 1,1,1,1
+            pos_hint: {"right":0.65,"top": 0.6}
+            size_hint_y: .05
+            size_hint_x: 0.3
+        Button:
+            text: "Calcular"
+            pos_hint: {"right":0.65,"top": 0.5}
+            size_hint_y: .05
+            size_hint_x: 0.3
+            on_release: root.probando()
+        Label:
+            text: "Para observar diversas opciones para corregir el factor de potencia \n presione en [b] Corregir f.p. [/b]."
+            halign: 'center'
+            markup: True
+            color: 1,1,1,1
+            font_size: '20dp'
+            color: 1,1,1,1
+            pos_hint: {"right":0.77,"top": 0.35}
+            size_hint_y: .05
+            size_hint_x: 0.6
+        Button:
+            text: "Corregir f.p."
+            pos_hint: {"right":0.65,"top": 0.25}
+            size_hint_y: .05
+            size_hint_x: 0.3
+            on_release: app.root.current = "correcfactorpotencia"
+        Button:
+            text: "Volver"
+            pos_hint: {"right":0.1,"top": 1}
+            size_hint_y: .05
+            size_hint_x: 0.1
+            on_release: app.root.current = "main"
+<NuevoFPPage>:
+    name: "correcfactorpotencia"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'Fondo4.jpg'
+    FloatLayout:
+        Label:
+            text: "[b]A continuación se muestran las diversas opciones disponibles para corregir el factor de potencia. \n Presione en 'Calcular' para ver su potencia reactiva actual.[/b]"
+            markup: True
+            halign: 'center'
+            color: 1,1,1,1
+            font_size: '17dp'
+            color: 1,1,1,1
+            pos_hint: {"right":0.8,"top": 0.95}
+            size_hint_y: .05
+            size_hint_x: 0.6
+        Label:
+            text: "[b]La magnitud de la potencia reactiva actual de su sistema es de:[/b]"
+            markup: True
+            color: 1,1,1,1
+            font_size: '17dp'
+            pos_hint: {"right":0.65,"top": 0.885}
+            size_hint_y: .05
+            size_hint_x: 0.3
+        Label:
+            text: root.Qtotal
+            font_size: '17dp'
+            color: 1,1,1,1
+            pos_hint: {"right":0.65,"top": 0.82}
+            size_hint_y: .05
+            size_hint_x: 0.3
+        Button:
+            text: "Calcular"
+            pos_hint: {"right":0.65,"top": 0.74}
+            size_hint_y: .05
+            size_hint_x: 0.3
+            on_release: root.calcreactiva()
+        Label:
+            text: root.aresep
+            halign: 'center'
+            color: 1,1,1,1
+            font_size: '15dp'
+            pos_hint: {"right":0.75,"top": 0.67}
+            size_hint_y: .05
+            size_hint_x: 0.5
+        Label:
+            text: "[b]Opciones para corregir f.p.: [/b]"
+            markup: True
+            halign: 'center'
+            color: 1,1,1,1
+            font_size: '19dp'
+            pos_hint: {"right":0.75,"top": 0.62}
+            size_hint_y: .05
+            size_hint_x: 0.5
+        Button:
+            text: "0.90"
+            pos_hint: {"right":0.275,"top": 0.55}
+            size_hint_y: .05
+            size_hint_x: 0.1
+            on_release: root.calcnuevareactiva90()
+        Button:
+            text: "0.95"
+            pos_hint: {"right":0.55,"top": 0.55}
+            size_hint_y: .05
+            size_hint_x: 0.1
+            on_release: root.calcnuevareactiva95()
+        Button:
+            text: "0.98"
+            pos_hint: {"right":0.825,"top": 0.55}
+            size_hint_y: .05
+            size_hint_x: 0.1
+            on_release: root.calcnuevareactiva98()
+        Label:
+            text: "[b]Los bancos de capacitores de las empresas EATON y Schneider enlistados que proporcionan \n las potencias reactivas más cercanas a la requerida son:[/b]"
+            halign: 'center'
+            markup: True
+            color: 1,1,1,1
+            font_size: '18dp'
+            pos_hint: {"right":0.75,"top": 0.48}
+            size_hint_y: .05
+            size_hint_x: 0.5
+        Label:
+            text: "[b]Bancos de capacitores EATON:[/b]"
+            halign: 'center'
+            markup: True
+            color: 1,1,1,1
+            font_size: '18dp'
+            pos_hint: {"right":0.4,"top": 0.42}
+            size_hint_y: .05
+            size_hint_x: 0.3
+        Label:
+            text: "[b]Bancos de capacitores Schneider:[/b]"
+            halign: 'center'
+            markup: True
+            color: 1,1,1,1
+            font_size: '18dp'
+            pos_hint: {"right":0.9,"top": 0.42}
+            size_hint_y: .05
+            size_hint_x: 0.3
+        Label:
+            text: root.Eaton1
+            halign: 'center'
+            markup: True
+            color: 1,1,1,1
+            font_size: '17dp'
+            pos_hint: {"right":0.2,"top": 0.35}
+            size_hint_y: .05
+            size_hint_x: 0.1
+        Button:
+            text: "Seleccionar"
+            pos_hint: {"right":0.2,"top": 0.28}
+            size_hint_y: .05
+            size_hint_x: 0.12
+            on_release: root.seleccioneaton1()
+        Label:
+            text: root.Eaton2
+            halign: 'center'
+            markup: True
+            color: 1,1,1,1
+            font_size: '17dp'
+            pos_hint: {"right":0.4,"top": 0.35}
+            size_hint_y: .05
+            size_hint_x: 0.1
+        Button:
+            text: "Seleccionar"
+            pos_hint: {"right":0.4,"top": 0.28}
+            size_hint_y: .05
+            size_hint_x: 0.12
+            on_release: root.seleccioneaton2()
+        Label:
+            text: root.Schneider1
+            halign: 'center'
+            markup: True
+            color: 1,1,1,1
+            font_size: '17dp'
+            pos_hint: {"right":0.7,"top": 0.35}
+            size_hint_y: .05
+            size_hint_x: 0.1
+        Button:
+            text: "Seleccionar"
+            pos_hint: {"right":0.7,"top": 0.28}
+            size_hint_y: .05
+            size_hint_x: 0.12
+            on_release: root.seleccionschneider1()
+        Label:
+            text: root.Schneider2
+            halign: 'center'
+            markup: True
+            color: 1,1,1,1
+            font_size: '17dp'
+            pos_hint: {"right":0.9,"top": 0.35}
+            size_hint_y: .05
+            size_hint_x: 0.1
+        Button:
+            text: "Seleccionar"
+            pos_hint: {"right":0.9,"top": 0.28}
+            size_hint_y: .05
+            size_hint_x: 0.12
+            on_release: root.seleccionschneider2()
+        Label:
+            text: "[b]Para calcular el factor de potencia con alguno de los bancos ofrecidos haga click en 'Seleccionar' \n Para ver más información acerca de los bancos ofrecidos presione 'Base de datos'.[/b]"
+            halign: 'center'
+            markup: True
+            color: 1,1,1,1
+            font_size: '18dp'
+            pos_hint: {"right":0.75,"top": 0.21}
+            size_hint_y: .05
+            size_hint_x: 0.5
+        Label:
+            text: "[b]El nuevo factor de potencia sería de:[/b]"
+            markup: True
+            color: 1,1,1,1
+            font_size: '17dp'
+            pos_hint: {"right":0.65,"top": 0.15}
+            size_hint_y: .05
+            size_hint_x: 0.3
+        Label:
+            text: root.fpcortext
+            font_size: '17dp'
+            color: 1,1,1,1
+            pos_hint: {"right":0.65,"top": 0.09}
+            size_hint_y: .05
+            size_hint_x: 0.3
+        Button:
+            text: "Volver"
+            pos_hint: {"right":0.1,"top": 1}
+            size_hint_y: .05
+            size_hint_x: 0.1
+            on_release: app.root.current = "factorpotencia"
+        Button:
+            text: "Base de datos"
+            pos_hint: {"right":0.555,"top": 0.28}
+            size_hint_y: .05
+            size_hint_x: 0.13
+            on_release: root.create_database()
+<ErrorPagefpnuevo>:
+    name: "errorfpnuevo"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'Fondo7.jpg'
+    FloatLayout:
+        Label:
+            text: "[b] No ha ingresado cargas aún, está seleccionando una opción no válida o no ha presionado \n los botones de calcular fp, seleccionar fp nuevo y seleccionar un banco. \n Presione 'Volver' para intentarlo nuevamente. [/b]"
+            markup: True
+            halign: 'center'
+            font_size: '20dp'
+            color: 1,1,1,1
+            pos_hint: {"right":0.75,"top": 0.65}
+            size_hint_y: .1
+            size_hint_x: 0.5
+        Button:
+            text: "Volver"
+            pos_hint: {"right":0.575,"top": 0.5}
+            font_size: '20dp'
+            size_hint_y: .1
+            size_hint_x: 0.15
+            on_release: app.root.current = "correcfactorpotencia"
+<ListaPage>:
+    name: "Listatot"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'Fondo4.jpg'
+    FloatLayout:
+        Label:
+            text: "[b]Lista de cargas ingresadas:[/b]"
+            markup: True
+            font_size: '20dp'
+            color: 1,1,1,1
+            pos_hint: {"right":0.55,"top": 0.9}
+            size_hint_y: .05
+            size_hint_x: 0.1
+        Label:
+            markup: True
+            text: 'Pulse en [b]Actualizar [/b] Para ver las cargas que actualmente posee.'
+            color: 1,1,1,1
+            pos_hint: {"right":0.55,"top": 0.8}
+            size_hint_y: .05
+            size_hint_x: 0.1
+        Button:
+            text: "Volver"
+            pos_hint: {"right":0.1,"top": 1}
+            size_hint_y: .05
+            size_hint_x: 0.1
+            on_release: app.root.current = "main"
+        Button:
+            text: "Actualizar"
+            pos_hint: {"right":0.55,"top": 0.175}
+            size_hint_y: .05
+            size_hint_x: 0.1
+            on_release: root.actualizacion()
+        ScrollView:
+            pos_hint: {"right":0.985,"top": 0.75}
+            size_hint_y: 0.4
+            scroll_y: 0.5
+            FloatLayout:
+                size_hint_y: None
+                height: 550
+                Label:
+                    text: root.listcharges
+                    color: 1,1,1,1
+<DataBaseWid>:
+    name: "database"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'Fondo4.jpg'
+    FloatLayout:
+        Label:
+            text: "[b]Pulse en 'Actualizar' para ver las opciones de bancos de capacitores con el f.p. escogido. [/b]"
+            markup: True
+            font_size: '20dp'
+            halign: 'center'
+            color: 1,1,1,1
+            pos_hint: {"right":1,"top": 0.85}
+            size_hint_y: .05
+            size_hint_x: 1
+        Label:
+            text: "[b]Se mostrarán sólo aquellas opciones de bancos de capacitores encontradas. [/b]"
+            markup: True
+            font_size: '20dp'
+            halign: 'center'
+            color: 1,1,1,1
+            pos_hint: {"right":1,"top": 0.8}
+            size_hint_y: .05
+            size_hint_x: 1
+        ScrollView:
+            pos_hint: {"right":0.97,"top": 0.75}
+            size_hint_y: 0.45
+            scroll_y: 0.5
+            FloatLayout:
+                size_hint_y: None
+                height: 600
+                Label:
+                    text: root.listcharges
+                    color: 1,1,1,1
+        Button:
+            text: "Actualizar"
+            pos_hint: {"right":0.55,"top": 0.28}
+            size_hint_y: .05
+            size_hint_x: 0.1
+            on_release: root.actualizacion2()
+        Label:
+            text: "[b]Para ver distribuidores cercanos de los capacitores de las empresas Eaton o Schneider,\n presione uno de los botones mostrados a continuación. [/b]"
+            markup: True
+            font_size: '17dp'
+            halign: 'center'
+            color: 1,1,1,1
+            pos_hint: {"right":1,"top": 0.22}
+            size_hint_y: .1
+            size_hint_x: 1
+        Label:
+            text: "[b]Distribuidores cercanos de Eaton [/b]"
+            markup: True
+            font_size: '17dp'
+            halign: 'center'
+            color: 1,1,1,1
+            pos_hint: {"right":0.4,"top": 0.14}
+            size_hint_y: .05
+            size_hint_x: 0.2
+        Button:
+            text: "Ver"
+            pos_hint: {"right":0.35,"top": 0.08}
+            size_hint_y: .05
+            size_hint_x: 0.1
+            on_release: root.linkeaton()
+        Label:
+            text: "[b]Distribuidores cercanos de Schneider [/b]"
+            markup: True
+            font_size: '17dp'
+            halign: 'center'
+            color: 1,1,1,1
+            pos_hint: {"right":0.8,"top": 0.14}
+            size_hint_y: .05
+            size_hint_x: 0.2
+        Button:
+            text: "Ver"
+            pos_hint: {"right":0.75,"top": 0.08}
+            size_hint_y: .05
+            size_hint_x: 0.1
+            on_release: root.linkschneider()
+        Button:
+            text: "Volver"
+            pos_hint: {"right":0.1,"top": 1}
+            size_hint_y: .05
+            size_hint_x: 0.1
+            on_release: app.root.current = "correcfactorpotencia"
