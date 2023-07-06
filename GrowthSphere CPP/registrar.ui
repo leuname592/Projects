@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>registrar</class>
+ <widget class="QWidget" name="registrar">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1280</width>
+    <height>720</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(51, 51, 51);</string>
+  </property>
+  <widget class="QLineEdit" name="lineEditNombre">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>100</y>
+     <width>301</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit{
+font: 12pt &quot;Segoe UI&quot;;
+color: rgb(0, 0, 0);
+border: 1px solid #ccc;
+border-radius: 10px;
+background-color: rgb(194, 194, 194);
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>150</y>
+     <width>101</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">  font: 12pt &quot;Segoe UI&quot;;
+  color: rgb(193, 193, 193)</string>
+   </property>
+   <property name="text">
+    <string>Edad</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>70</y>
+     <width>63</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">  font: 12pt &quot;Segoe UI&quot;;
+  color: rgb(193, 193, 193)</string>
+   </property>
+   <property name="text">
+    <string>Nombre</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="registrarUsuario">
+   <property name="geometry">
+    <rect>
+     <x>560</x>
+     <y>510</y>
+     <width>121</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+  font: 12pt &quot;Segoe UI&quot;;
+  border: none;
+  background-color: rgb(68, 68, 68);
+  color: white;
+  border-radius: 10px;
+}
+
+QPushButton:hover {
+  background-color: rgb(81, 81, 81);
+  border-color: rgb(81, 81, 81);
+}
+
+QPushButton:pressed {
+  background-color: rgb(81, 81, 81);
+  border-color: rgb(81, 81, 81);
+}
+</string>
+   </property>
+   <property name="text">
+    <string>Registrar</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEditEdad">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>180</y>
+     <width>301</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit{
+font: 12pt &quot;Segoe UI&quot;;
+color: rgb(0, 0, 0);
+border: 1px solid #ccc;
+border-radius: 10px;
+background-color: rgb(194, 194, 194);
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEditPasswordR">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>340</y>
+     <width>301</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit{
+font: 12pt &quot;Segoe UI&quot;;
+color: rgb(0, 0, 0);
+border: 1px solid #ccc;
+border-radius: 10px;
+background-color: rgb(194, 194, 194);
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>230</y>
+     <width>171</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">  font: 12pt &quot;Segoe UI&quot;;
+  color: rgb(193, 193, 193)</string>
+   </property>
+   <property name="text">
+    <string>Nombre de Usuario</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEditUsuarioR">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>260</y>
+     <width>301</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit{
+font: 12pt &quot;Segoe UI&quot;;
+color: rgb(0, 0, 0);
+border: 1px solid #ccc;
+border-radius: 10px;
+background-color: rgb(194, 194, 194);
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>310</y>
+     <width>101</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">  font: 12pt &quot;Segoe UI&quot;;
+  color: rgb(193, 193, 193)</string>
+   </property>
+   <property name="text">
+    <string>Contraseña</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>390</y>
+     <width>101</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">  font: 12pt &quot;Segoe UI&quot;;
+  color: rgb(193, 193, 193)</string>
+   </property>
+   <property name="text">
+    <string>Email</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEditEmail">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>420</y>
+     <width>301</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit{
+font: 12pt &quot;Segoe UI&quot;;
+color: rgb(0, 0, 0);
+border: 1px solid #ccc;
+border-radius: 10px;
+background-color: rgb(194, 194, 194);
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="warning">
+   <property name="geometry">
+    <rect>
+     <x>440</x>
+     <y>580</y>
+     <width>371</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">  font: 12pt &quot;Segoe UI&quot;;
+  color:rgb(225, 116, 39);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
