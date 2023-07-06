@@ -1,7 +1,8 @@
 ## Proyecto de CPP, QT, SQL
-<br> 
+
 La siguiente aplicacion tiene el nombre de GrowthSphere, esta aplicacion pone en perspectiva la vida de una persona en donde se puede planificar los objetivos y ver como cada dia nos vamos acercando al final de ella.
 For running cmake:
+
 ```cpp
 cmake.exe -S . -B . -G "MinGW Makefiles"
 ```
